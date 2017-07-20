@@ -1,7 +1,9 @@
-package com.me.geekpracticedemo;
+package com.me.geekpracticedemo.ui.main.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.me.geekpracticedemo.R;
 
 public class MainActivity
     extends AppCompatActivity {

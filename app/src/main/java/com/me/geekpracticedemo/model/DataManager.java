@@ -1,8 +1,11 @@
 package com.me.geekpracticedemo.model;
 
+import com.me.geekpracticedemo.model.bean.WelcomeBean;
 import com.me.geekpracticedemo.model.db.DBHelper;
 import com.me.geekpracticedemo.model.http.HttpHelper;
 import com.me.geekpracticedemo.model.prefs.PreferenceHelper;
+
+import io.reactivex.Flowable;
 
 /**
  * Created by user on 2017/7/19.
@@ -18,5 +21,15 @@ public class DataManager implements HttpHelper,DBHelper,PreferenceHelper {
         mHttpHelper = httpHelper;
         mDBHelper = DBHelper;
         mPreferenceHelper = preferenceHelper;
+    }
+
+    @Override
+    public Flowable<WelcomeBean> fetchWelcomeInfo(String res) {
+        return mHttpHelper.fetchWelcomeInfo(res);
+    }
+
+    @Override
+    public boolean getNoImageState() {
+        return mPreferenceHelper.getNoImageState();
     }
 }

@@ -1,0 +1,67 @@
+package com.me.geekpracticedemo.ui.main.activity;
+
+import android.content.Intent;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.me.geekpracticedemo.R;
+import com.me.geekpracticedemo.base.BaseActivity;
+import com.me.geekpracticedemo.base.contract.WelcomeContract;
+import com.me.geekpracticedemo.model.bean.WelcomeBean;
+import com.me.geekpracticedemo.util.ImageLoader;
+
+import butterknife.BindView;
+
+/**
+ * Created by user on 2017/7/20.
+ */
+
+public class WelcomeActivity
+    extends BaseActivity<WelcomeContract.Presenter>
+    implements WelcomeContract.View {
+    @BindView(R.id.tv_welcome_author)
+    TextView mTvWelcomeAuthor;
+    @BindView(R.id.iv_welcome_bg)
+    ImageView mIvWelcomeBg;
+
+    @Override
+    public void showContent(WelcomeBean welcomeBean) {
+        ImageLoader.load(this,welcomeBean.getImg(),mIvWelcomeBg);
+        mIvWelcomeBg.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(500).start();
+        mTvWelcomeAuthor.setText(welcomeBean.getText());
+    }
+
+    @Override
+    public void jumpToMain() {
+        Intent intent = new Intent();
+        intent.setClass(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+
+        //activity进入退出动画
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+
+    }
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
+
+    @Override
+    protected void initEventAndData() {
+        /**
+         * 联网请求数据
+         */
+        mPresenter.getWelcomeData();
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_welcome;
+    }
+
+}

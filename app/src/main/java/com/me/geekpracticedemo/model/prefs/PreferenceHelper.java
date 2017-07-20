@@ -5,4 +5,7 @@ package com.me.geekpracticedemo.model.prefs;
  */
 
 public interface PreferenceHelper {
+
+
+    boolean getNoImageState();
 }

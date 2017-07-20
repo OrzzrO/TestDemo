@@ -19,4 +19,6 @@ public class Constants {
     public static final String PATH_SDCARD = Environment
         .getExternalStorageDirectory().getAbsolutePath() + File.separator + "demo" + File.separator + "GeekNews";
     //PATH ---END---
+
+    public static final String SP_NO_IMAGE = "no_image";
 }
