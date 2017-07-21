@@ -1,4 +1,4 @@
-package com.me.geekpracticedemo.base.contract;
+package com.me.geekpracticedemo.base.contract.main;
 
 import com.me.geekpracticedemo.base.BasePresenter;
 import com.me.geekpracticedemo.base.BaseView;

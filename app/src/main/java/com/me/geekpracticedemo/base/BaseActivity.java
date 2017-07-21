@@ -5,6 +5,8 @@ import com.me.geekpracticedemo.di.component.ActivityComponent;
 import com.me.geekpracticedemo.di.component.DaggerActivityComponent;
 import com.me.geekpracticedemo.di.module.ActivityModule;
 
+import javax.inject.Inject;
+
 /**
  * Created by user on 2017/7/19.
  * mvp的基类
@@ -12,6 +14,7 @@ import com.me.geekpracticedemo.di.module.ActivityModule;
 
 public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivity implements BaseView {
 
+    @Inject
     protected T mPresenter;
 
 
