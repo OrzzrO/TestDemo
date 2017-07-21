@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+
     }
 
     @Override
@@ -60,4 +61,27 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
 
+    @Override
+    public void showErrorMsg(String msg) {
+    }
+
+    @Override
+    public void useNightMode(boolean isNight) {
+    }
+
+    @Override
+    public void stateError() {
+    }
+
+    @Override
+    public void stateEmpty() {
+    }
+
+    @Override
+    public void stateLoading() {
+    }
+
+    @Override
+    public void stateMain() {
+    }
 }

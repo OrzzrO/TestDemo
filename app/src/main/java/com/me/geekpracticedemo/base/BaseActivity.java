@@ -49,6 +49,33 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
 
     }
 
+    @Override
+    public void showErrorMsg(String msg) {
+
+    }
+
+    @Override
+    public void stateError() {
+
+    }
+
+    @Override
+    public void stateEmpty() {
+
+    }
+
+    @Override
+    public void stateLoading() {
+
+    }
+
+    @Override
+    public void stateMain() {
+
+    }
+
+
+
     /**
      * 每个类都会要调用inject方法,所以抽出来给基类
      */

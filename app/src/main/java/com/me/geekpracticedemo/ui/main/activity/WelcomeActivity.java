@@ -70,4 +70,28 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
         super.onDestroy();
 
     }
+
+    @Override
+    public void showErrorMsg(String msg) {
+    }
+
+    @Override
+    public void useNightMode(boolean isNight) {
+    }
+
+    @Override
+    public void stateError() {
+    }
+
+    @Override
+    public void stateEmpty() {
+    }
+
+    @Override
+    public void stateLoading() {
+    }
+
+    @Override
+    public void stateMain() {
+    }
 }
