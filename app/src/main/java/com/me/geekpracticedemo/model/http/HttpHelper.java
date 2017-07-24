@@ -1,5 +1,6 @@
 package com.me.geekpracticedemo.model.http;
 
+import com.me.geekpracticedemo.model.bean.CommentBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 
 import io.reactivex.Flowable;
@@ -11,5 +12,9 @@ import io.reactivex.Flowable;
 public interface HttpHelper {
 
     Flowable<WelcomeBean> fetchWelcomeInfo(String res);
+
+    Flowable<CommentBean> fetchShortCommentInfo(int id);
+
+    Flowable<CommentBean> fetchLongCommentInfo(int id);
 
 }

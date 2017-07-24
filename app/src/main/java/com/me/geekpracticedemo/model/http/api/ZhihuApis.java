@@ -1,5 +1,6 @@
 package com.me.geekpracticedemo.model.http.api;
 
+import com.me.geekpracticedemo.model.bean.CommentBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 
 import io.reactivex.Flowable;
@@ -23,4 +24,20 @@ public interface ZhihuApis {
     @GET("start-image/{res}")
     Flowable<WelcomeBean> getWelcomeInfo(@Path("res") String res);
 
+
+    /**
+     * 日报的短评论
+     * @param id
+     * @return
+     */
+    @GET("story/{id}/short-comments")
+    Flowable<CommentBean> getShortCommentInfo(@Path("id")int id);
+
+    /**
+     * 日报的短评论
+     * @param id
+     * @return
+     */
+    @GET("story/{id}/long-comments")
+    Flowable<CommentBean> getLongCommentInfo(@Path("id")int id);
 }

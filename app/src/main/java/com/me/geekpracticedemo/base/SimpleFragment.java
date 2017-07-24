@@ -20,10 +20,10 @@ public abstract class SimpleFragment extends SupportFragment {
 
 
     private Activity mActivity;
-    private Context mContext;
-    private View mView;
+    protected Context mContext;
+    protected View mView;
     private Unbinder mUnbinder;
-    private boolean isInited = false;
+    protected boolean isInited = false;
 
     @Override
     public void onAttach(Context context) {

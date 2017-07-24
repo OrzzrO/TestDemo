@@ -1,5 +1,6 @@
 package com.me.geekpracticedemo.model.http;
 
+import com.me.geekpracticedemo.model.bean.CommentBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 import com.me.geekpracticedemo.model.http.api.GankApis;
 import com.me.geekpracticedemo.model.http.api.GoldApis;
@@ -39,5 +40,15 @@ public class RetrofitHelper implements HttpHelper {
     @Override
     public Flowable<WelcomeBean> fetchWelcomeInfo(String res) {
         return mZhihuApiService.getWelcomeInfo(res);
+    }
+
+    @Override
+    public Flowable<CommentBean> fetchShortCommentInfo(int id) {
+        return mZhihuApiService.getShortCommentInfo(id);
+    }
+
+    @Override
+    public Flowable<CommentBean> fetchLongCommentInfo(int id) {
+        return mZhihuApiService.getLongCommentInfo(id);
     }
 }
