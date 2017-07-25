@@ -5,4 +5,13 @@ package com.me.geekpracticedemo.model.db;
  */
 
 public interface DBHelper {
+
+    void insertNewsId(int id);
+
+    /**
+     * 查询 阅读记录
+     * @param id
+     * @return
+     */
+    boolean queryNewsId(int id);
 }

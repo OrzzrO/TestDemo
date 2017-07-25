@@ -1,6 +1,8 @@
 package com.me.geekpracticedemo.model.http;
 
 import com.me.geekpracticedemo.model.bean.CommentBean;
+import com.me.geekpracticedemo.model.bean.DailyBeforeListBean;
+import com.me.geekpracticedemo.model.bean.DailyListBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 
 import io.reactivex.Flowable;
@@ -17,4 +19,7 @@ public interface HttpHelper {
 
     Flowable<CommentBean> fetchLongCommentInfo(int id);
 
+    Flowable<DailyBeforeListBean> fetchDailyBeforeListInfo(String date);
+
+    Flowable<DailyListBean> fetchDailyListInfo();
 }

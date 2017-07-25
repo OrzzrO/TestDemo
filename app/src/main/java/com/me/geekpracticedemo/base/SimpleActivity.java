@@ -20,7 +20,7 @@ import me.yokeyword.fragmentation.SupportActivity;
 public abstract class SimpleActivity extends SupportActivity {
 
     private Unbinder mUnbinder;
-    private Activity mContext;
+    protected Activity mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

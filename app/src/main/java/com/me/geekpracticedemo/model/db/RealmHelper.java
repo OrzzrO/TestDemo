@@ -1,9 +1,12 @@
 package com.me.geekpracticedemo.model.db;
 
+import com.me.geekpracticedemo.model.bean.ReadStateBean;
+
 import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 
 /**
  * Created by user on 2017/7/19.
@@ -21,5 +24,33 @@ public class RealmHelper implements DBHelper {
         .deleteRealmIfMigrationNeeded()
         .name(DB_NAME)
         .build());
+    }
+    /**
+     * 增加 阅读记录
+     * @param id
+     * 使用@PrimaryKey注解后copyToRealm需要替换为copyToRealmOrUpdate
+     */
+    @Override
+    public void insertNewsId(int id) {
+        ReadStateBean bean = new ReadStateBean();
+        bean.setId(id);
+        mRealm.beginTransaction();
+        mRealm.copyToRealmOrUpdate(bean);
+        mRealm.commitTransaction();
+    }
+    /**
+     * 查询 阅读记录
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean queryNewsId(int id) {
+        RealmResults<ReadStateBean> results = mRealm.where(ReadStateBean.class).findAll();
+        for (ReadStateBean item : results) {
+            if (item.getId() == id){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,6 +1,8 @@
 package com.me.geekpracticedemo.model.http;
 
 import com.me.geekpracticedemo.model.bean.CommentBean;
+import com.me.geekpracticedemo.model.bean.DailyBeforeListBean;
+import com.me.geekpracticedemo.model.bean.DailyListBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 import com.me.geekpracticedemo.model.http.api.GankApis;
 import com.me.geekpracticedemo.model.http.api.GoldApis;
@@ -50,5 +52,15 @@ public class RetrofitHelper implements HttpHelper {
     @Override
     public Flowable<CommentBean> fetchLongCommentInfo(int id) {
         return mZhihuApiService.getLongCommentInfo(id);
+    }
+
+    @Override
+    public Flowable<DailyBeforeListBean> fetchDailyBeforeListInfo(String date) {
+        return mZhihuApiService.getDailyBeforeList(date);
+    }
+
+    @Override
+    public Flowable<DailyListBean> fetchDailyListInfo() {
+        return mZhihuApiService.getDailyList();
     }
 }

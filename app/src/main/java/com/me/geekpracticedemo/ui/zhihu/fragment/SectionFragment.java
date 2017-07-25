@@ -11,7 +11,7 @@ import com.me.geekpracticedemo.presenter.zhihu.SectionPresenter;
 public class SectionFragment extends RootFragment<SectionPresenter> implements SectionContract.View{
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+//        getFragmentComponent().inject(this);
     }
 
     @Override

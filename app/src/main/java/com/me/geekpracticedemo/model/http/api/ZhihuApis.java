@@ -1,6 +1,8 @@
 package com.me.geekpracticedemo.model.http.api;
 
 import com.me.geekpracticedemo.model.bean.CommentBean;
+import com.me.geekpracticedemo.model.bean.DailyBeforeListBean;
+import com.me.geekpracticedemo.model.bean.DailyListBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 
 import io.reactivex.Flowable;
@@ -40,4 +42,16 @@ public interface ZhihuApis {
      */
     @GET("story/{id}/long-comments")
     Flowable<CommentBean> getLongCommentInfo(@Path("id")int id);
+
+    /**
+     * 往期日报
+     */
+    @GET("news/before/{date}")
+    Flowable<DailyBeforeListBean> getDailyBeforeList(@Path("date") String date);
+
+    /**
+     * 最新日报
+     */
+    @GET("news/latest")
+    Flowable<DailyListBean> getDailyList();
 }

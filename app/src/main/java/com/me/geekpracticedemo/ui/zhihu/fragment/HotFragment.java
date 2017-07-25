@@ -2,6 +2,7 @@ package com.me.geekpracticedemo.ui.zhihu.fragment;
 
 import com.me.geekpracticedemo.base.RootFragment;
 import com.me.geekpracticedemo.base.contract.zhihu.HotContract;
+import com.me.geekpracticedemo.model.bean.HotListBean;
 import com.me.geekpracticedemo.presenter.zhihu.HotPresenter;
 
 /**
@@ -11,11 +12,15 @@ import com.me.geekpracticedemo.presenter.zhihu.HotPresenter;
 public class HotFragment extends RootFragment<HotPresenter> implements HotContract.View {
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+//        getFragmentComponent().inject(this);
     }
 
     @Override
     protected int getlayoutId() {
         return 0;
+    }
+
+    @Override
+    public void showContent(HotListBean hotListBean) {
     }
 }

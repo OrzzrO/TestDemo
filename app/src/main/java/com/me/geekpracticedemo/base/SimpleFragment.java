@@ -19,7 +19,7 @@ import me.yokeyword.fragmentation.SupportFragment;
 public abstract class SimpleFragment extends SupportFragment {
 
 
-    private Activity mActivity;
+    protected Activity mActivity;
     protected Context mContext;
     protected View mView;
     private Unbinder mUnbinder;

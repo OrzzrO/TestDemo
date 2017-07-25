@@ -21,4 +21,5 @@ public class Constants {
     //PATH ---END---
 
     public static final String SP_NO_IMAGE = "no_image";
+    public static final String IT_ZHIHU_DETAIL_ID = "zhihu_detail_id";
 }

@@ -6,6 +6,7 @@ import com.me.geekpracticedemo.di.module.ActivityModule;
 import com.me.geekpracticedemo.di.scope.ActivityScope;
 import com.me.geekpracticedemo.ui.main.activity.MainActivity;
 import com.me.geekpracticedemo.ui.main.activity.WelcomeActivity;
+import com.me.geekpracticedemo.ui.zhihu.activity.ZhihuDetailActivity;
 
 import dagger.Component;
 
@@ -21,4 +22,6 @@ public interface ActivityComponent {
     void inject(WelcomeActivity welcomeActivity);
 
     void inject(MainActivity mainActivity);
+
+    void inject(ZhihuDetailActivity zhihuDetailActivity);
 }

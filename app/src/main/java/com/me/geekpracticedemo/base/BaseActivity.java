@@ -1,5 +1,7 @@
 package com.me.geekpracticedemo.base;
 
+import android.support.v7.app.AppCompatDelegate;
+
 import com.me.geekpracticedemo.app.App;
 import com.me.geekpracticedemo.di.component.ActivityComponent;
 import com.me.geekpracticedemo.di.component.DaggerActivityComponent;
@@ -28,6 +30,17 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
 
     protected ActivityModule getActivityModule() {
         return new ActivityModule(this);
+    }
+
+    @Override
+    public void useNightMode(boolean isNight) {
+        if (isNight){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        recreate();
+
     }
 
     @Override
