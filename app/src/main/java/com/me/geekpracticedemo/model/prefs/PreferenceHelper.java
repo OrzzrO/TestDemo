@@ -8,4 +8,12 @@ public interface PreferenceHelper {
 
 
     boolean getNoImageState();
+
+    void setCurrentItem(int index);
+
+    int getCurrentItem();
+
+    void setVersionPoint(boolean b);
+
+    boolean getVersionPoint();
 }

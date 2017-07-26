@@ -21,5 +21,29 @@ public class Constants {
     //PATH ---END---
 
     public static final String SP_NO_IMAGE = "no_image";
+    public static final String SP_CURRENT_ITEM = "current_item";
+    public static final String SP_VERSION_POINT = "version_point";
+
+
+
+
+
+
+
     public static final String IT_ZHIHU_DETAIL_ID = "zhihu_detail_id";
+    public static final String IT_ZHIHU_COMMENT_ID = "zhihu_comment_id" ;
+    public static final String IT_ZHIHU_COMMENT_ALL_NUM ="zhihu_comment_all_num";
+    public static final String IT_ZHIHU_COMMENT_SHORT_NUM = "zhihu_comment_short_num";
+    public static final String IT_ZHIHU_COMMENT_LONG_NUM = "zhihu_comment_long_num";
+
+
+
+    public static final int TYPE_ZHIHU = 101;
+    public static final int TYPE_GANK = 102;
+    public static final int TYPE_WECHAT = 106;
+    public static final int TYPE_GOLD = 108;
+    public static final int TYPE_VTEX = 109;
+    public static final int TYPE_LIKE = 111;
+    public static final int TYPE_SETTING = 110;
+    public static final int TYPE_ABOUT = 112;
 }

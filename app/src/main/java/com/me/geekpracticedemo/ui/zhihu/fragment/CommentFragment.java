@@ -3,6 +3,7 @@ package com.me.geekpracticedemo.ui.zhihu.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.me.geekpracticedemo.R;
@@ -42,14 +43,20 @@ public class CommentFragment extends RootFragment<CommentPresenter> implements C
     @Override
     protected void initEventAndData() {
         super.initEventAndData();
-        Bundle bundle = getArguments();
-        stateLoading();
-        mPresenter.getCommentData(bundle.getInt("id"), bundle.getInt("kind"));
-        mRvCommentList.setVisibility(View.INVISIBLE);
-        mList = new ArrayList();
-        mAdapter = new CommentAdapter(mContext, mList);
-        mRvCommentList.setLayoutManager(new LinearLayoutManager(mContext));
-        mRvCommentList.setAdapter(mAdapter);
+
+        if (getArguments() != null){
+            Bundle bundle = getArguments();
+            Log.w("hongTest", "initEventAndData:  bundle = " + bundle );
+            stateLoading();
+            mPresenter.getCommentData(bundle.getInt("id"), bundle.getInt("kind"));
+            mRvCommentList.setVisibility(View.INVISIBLE);
+            mList = new ArrayList();
+            mAdapter = new CommentAdapter(mContext, mList);
+            mRvCommentList.setLayoutManager(new LinearLayoutManager(mContext));
+            mRvCommentList.setAdapter(mAdapter);
+        }
+
+
 
     }
 

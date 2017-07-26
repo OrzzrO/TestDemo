@@ -3,6 +3,7 @@ package com.me.geekpracticedemo.model.http;
 import com.me.geekpracticedemo.model.bean.CommentBean;
 import com.me.geekpracticedemo.model.bean.DailyBeforeListBean;
 import com.me.geekpracticedemo.model.bean.DailyListBean;
+import com.me.geekpracticedemo.model.bean.VersionBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 import com.me.geekpracticedemo.model.http.api.GankApis;
 import com.me.geekpracticedemo.model.http.api.GoldApis;
@@ -10,6 +11,7 @@ import com.me.geekpracticedemo.model.http.api.MyApis;
 import com.me.geekpracticedemo.model.http.api.VtexApis;
 import com.me.geekpracticedemo.model.http.api.WeChatApis;
 import com.me.geekpracticedemo.model.http.api.ZhihuApis;
+import com.me.geekpracticedemo.model.http.response.MyHttpResponse;
 
 import javax.inject.Inject;
 
@@ -62,5 +64,10 @@ public class RetrofitHelper implements HttpHelper {
     @Override
     public Flowable<DailyListBean> fetchDailyListInfo() {
         return mZhihuApiService.getDailyList();
+    }
+
+    @Override
+    public Flowable<MyHttpResponse<VersionBean>> fetchVersionInfo() {
+        return mMyApiService.getVersionInfo();
     }
 }

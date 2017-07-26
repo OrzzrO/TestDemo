@@ -35,6 +35,21 @@
             android:launchMode="singleTop">
 
         </activity>
+
+        <activity android:name=".ui.zhihu.activity.CalendarActivity"
+                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.zhihu.activity.ZhihuDetailActivity"
+                  android:configChanges="orientation|screenSize|keyboardHidden"
+                  android:windowSoftInputMode="stateHidden|adjustResize"
+                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.zhihu.activity.CommentActivity"
+                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"/>
+
+
+        <service android:name=".util.UpdateService"/>
     </application>
 
 </manifest>

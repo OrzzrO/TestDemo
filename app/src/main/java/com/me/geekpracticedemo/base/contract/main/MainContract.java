@@ -6,6 +6,8 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 /**
  * Created by user on 2017/7/21.
+ * 进入主页面,业务逻辑为: 检测权限,检测新版本,如果有新版本,展示新版本的对话框,
+ * 启动下载服务,
  */
 
 public interface MainContract {

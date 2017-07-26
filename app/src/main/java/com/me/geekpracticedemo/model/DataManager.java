@@ -3,9 +3,11 @@ package com.me.geekpracticedemo.model;
 import com.me.geekpracticedemo.model.bean.CommentBean;
 import com.me.geekpracticedemo.model.bean.DailyBeforeListBean;
 import com.me.geekpracticedemo.model.bean.DailyListBean;
+import com.me.geekpracticedemo.model.bean.VersionBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
 import com.me.geekpracticedemo.model.db.DBHelper;
 import com.me.geekpracticedemo.model.http.HttpHelper;
+import com.me.geekpracticedemo.model.http.response.MyHttpResponse;
 import com.me.geekpracticedemo.model.prefs.PreferenceHelper;
 
 import io.reactivex.Flowable;
@@ -52,8 +54,33 @@ public class DataManager implements HttpHelper,DBHelper,PreferenceHelper {
     }
 
     @Override
+    public Flowable<MyHttpResponse<VersionBean>> fetchVersionInfo() {
+        return mHttpHelper.fetchVersionInfo();
+    }
+
+    @Override
     public boolean getNoImageState() {
         return mPreferenceHelper.getNoImageState();
+    }
+
+    @Override
+    public void setCurrentItem(int index) {
+        mPreferenceHelper.setCurrentItem(index);
+    }
+
+    @Override
+    public int getCurrentItem() {
+        return mPreferenceHelper.getCurrentItem();
+    }
+
+    @Override
+    public void setVersionPoint(boolean b) {
+        mPreferenceHelper.setVersionPoint(b);
+    }
+
+    @Override
+    public boolean getVersionPoint() {
+        return mPreferenceHelper.getVersionPoint();
     }
 
     @Override

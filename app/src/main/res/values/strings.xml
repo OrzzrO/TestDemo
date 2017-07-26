@@ -26,4 +26,8 @@
         name="detail_bottom_commit">评论</string>
     <string
         name="detail_bottom_share">分享</string>
+    <string
+        name="drawer_open">打开</string>
+    <string
+        name="drawer_close">关闭</string>
 </resources>
