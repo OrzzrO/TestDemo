@@ -3,8 +3,15 @@ package com.me.geekpracticedemo.model.http;
 import com.me.geekpracticedemo.model.bean.CommentBean;
 import com.me.geekpracticedemo.model.bean.DailyBeforeListBean;
 import com.me.geekpracticedemo.model.bean.DailyListBean;
+import com.me.geekpracticedemo.model.bean.DetailExtraBean;
+import com.me.geekpracticedemo.model.bean.HotListBean;
+import com.me.geekpracticedemo.model.bean.SectionChildListBean;
+import com.me.geekpracticedemo.model.bean.SectionListBean;
+import com.me.geekpracticedemo.model.bean.ThemeChildListBean;
+import com.me.geekpracticedemo.model.bean.ThemeListBean;
 import com.me.geekpracticedemo.model.bean.VersionBean;
 import com.me.geekpracticedemo.model.bean.WelcomeBean;
+import com.me.geekpracticedemo.model.bean.ZhihuDetailBean;
 import com.me.geekpracticedemo.model.http.api.GankApis;
 import com.me.geekpracticedemo.model.http.api.GoldApis;
 import com.me.geekpracticedemo.model.http.api.MyApis;
@@ -16,6 +23,8 @@ import com.me.geekpracticedemo.model.http.response.MyHttpResponse;
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
+
+import static android.R.attr.id;
 
 /**
  * Created by user on 2017/7/19.
@@ -69,5 +78,40 @@ public class RetrofitHelper implements HttpHelper {
     @Override
     public Flowable<MyHttpResponse<VersionBean>> fetchVersionInfo() {
         return mMyApiService.getVersionInfo();
+    }
+
+    @Override
+    public Flowable<ThemeListBean> fetchDailyThemeListInfo() {
+            return mZhihuApiService.getThemeList();
+    }
+
+    @Override
+    public Flowable<ThemeChildListBean> fetchThemeChildListInfo(int id) {
+        return mZhihuApiService.getThemeChildList(id);
+    }
+
+    @Override
+    public Flowable<SectionListBean> fetchSectionListInfo() {
+        return mZhihuApiService.getSectionList();
+    }
+
+    @Override
+    public Flowable<SectionChildListBean> fetchSectionChildListInfo() {
+        return mZhihuApiService.getSectionChildList(id);
+    }
+
+    @Override
+    public Flowable<HotListBean> fetchHotListInfo() {
+        return mZhihuApiService.getHotList();
+    }
+
+    @Override
+    public Flowable<ZhihuDetailBean> fetchDetailInfo(int id) {
+        return mZhihuApiService.getDetailInfo(id);
+    }
+
+    @Override
+    public Flowable<DetailExtraBean> fetchDetailExtraInfo(int id) {
+        return mZhihuApiService.getDetailExtraInfo(id);
     }
 }

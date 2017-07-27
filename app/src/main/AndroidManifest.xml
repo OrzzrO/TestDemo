@@ -47,8 +47,12 @@
         <activity android:name=".ui.zhihu.activity.CommentActivity"
                   android:launchMode="singleTop"
                   android:screenOrientation="portrait"/>
-
-
+        <activity android:name=".ui.zhihu.activity.ThemeActivity"
+                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.zhihu.activity.SectionActivity"
+                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"/>
         <service android:name=".util.UpdateService"/>
     </application>
 

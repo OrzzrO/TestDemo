@@ -29,9 +29,8 @@ public class ZhiHuMainFragment extends SimpleFragment {
 
     @Override
     protected void initEventAndData() {
-        mFragments.add(new CommentFragment());
         mFragments.add(new DailyFragment());
-        mFragments.add(new HotFragment());
+        mFragments.add(new ThemeFragment());
         mFragments.add(new SectionFragment());
         mFragments.add(new HotFragment());
         mAdapter = new ZhihuMainAdapter(getChildFragmentManager(), mFragments);

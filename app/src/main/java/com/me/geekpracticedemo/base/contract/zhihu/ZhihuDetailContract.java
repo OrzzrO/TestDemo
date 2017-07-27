@@ -30,8 +30,6 @@ public interface ZhihuDetailContract {
 
         void deleteLikeData();
 
-        void queryLikeData();
-
         void queryLikeData(int id);
 
         boolean getNoImageState();

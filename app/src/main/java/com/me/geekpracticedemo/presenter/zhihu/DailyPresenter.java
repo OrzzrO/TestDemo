@@ -170,6 +170,7 @@ public class DailyPresenter extends RxPresenter<DailyContract.View> implements D
 
     }
 
+    //viewpager自动轮播的
     @Override
     public void startInterval() {
         if (intervalSubscription != null && !intervalSubscription.isDisposed()) {

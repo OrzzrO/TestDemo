@@ -19,6 +19,7 @@ public class ImplPreferencesHelper implements PreferenceHelper{
     private static final boolean DEFAULT_NO_IMAGE = false;
     private static final int DEFAULT_CURRENT_ITEM = Constants.TYPE_ZHIHU;
     private static final boolean DEFAULT_VERSION_POINT = false;
+    private static final boolean DEFAULT_AUTO_SAVE = true;
     private SharedPreferences mPreferences;
 
 
@@ -51,5 +52,10 @@ public class ImplPreferencesHelper implements PreferenceHelper{
     @Override
     public boolean getVersionPoint() {
         return mPreferences.getBoolean(Constants.SP_VERSION_POINT, DEFAULT_VERSION_POINT);
+    }
+
+    @Override
+    public boolean getAutoCacheState() {
+        return mPreferences.getBoolean(Constants.SP_AUTO_CACHE, DEFAULT_AUTO_SAVE);
     }
 }

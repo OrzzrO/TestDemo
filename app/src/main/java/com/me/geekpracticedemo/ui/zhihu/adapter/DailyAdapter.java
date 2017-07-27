@@ -5,6 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +28,7 @@ import butterknife.ButterKnife;
  * Created by user on 2017/7/25.
  */
 
-public class DailyAdapter
-    extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DailyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
 
@@ -62,10 +62,13 @@ public class DailyAdapter
     public int getItemViewType(int position) {
         if (!isBefore) {
             if (position == 0) {
+//                Log.w("hongTest", "getItemViewType: 第一个条目是viewpager" );
                 return ITEM_TYPE.ITEM_TOP.ordinal();
             } else if (position == 1) {
+//                Log.w("hongTest", "getItemViewType: 第二个条目是textview" );
                 return ITEM_TYPE.ITEM_DATE.ordinal();
             } else {
+//                Log.w("hongTest", "getItemViewType:  普通条目" );
                 return ITEM_TYPE.ITEM_CONTENT.ordinal();
             }
         } else {
@@ -131,6 +134,7 @@ public class DailyAdapter
     }
 
     public void addDailyData(DailyListBean info) {
+        Log.w("hongTest", "addDailyData: info = " + info );
         currentTitle = "今日热闻";
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ZhihuDiffCallback(mList,info.getStories()),false);
         mList = info.getStories();

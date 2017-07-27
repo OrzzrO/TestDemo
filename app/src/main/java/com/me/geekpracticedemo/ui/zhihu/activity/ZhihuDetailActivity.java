@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -38,9 +39,7 @@ import static android.R.attr.id;
  * Created by user on 2017/7/25.
  */
 
-public class ZhihuDetailActivity
-    extends RootActivity<ZhihuDetailPresenter>
-    implements ZhihuDetailContract.View {
+public class ZhihuDetailActivity extends RootActivity<ZhihuDetailPresenter> implements ZhihuDetailContract.View {
 
 
     @BindView(R.id.detail_bar_image)
@@ -83,6 +82,7 @@ public class ZhihuDetailActivity
     @Override
     public void showContent(ZhihuDetailBean zhihuDetailBean) {
         stateMain();
+        Log.w("hongTest", "showContent: stateMain执行了~" );
         imgUrl = zhihuDetailBean.getImage();
         shareUrl = zhihuDetailBean.getShare_url();
         if (mIsNotTransition) {
@@ -127,10 +127,8 @@ public class ZhihuDetailActivity
     protected void initEventAndData() {
         super.initEventAndData();
         setToolBar(mViewToolbar, "");
-        Intent intent = new Intent();
-        mId = intent
-            .getExtras()
-            .getInt(Constants.IT_ZHIHU_DETAIL_ID);
+        Intent intent = getIntent();
+        mId = intent.getExtras().getInt(Constants.IT_ZHIHU_DETAIL_ID);
         mIsNotTransition = intent.getBooleanExtra("isNotTransition", false);
         mPresenter.queryLikeData(mId);
         mPresenter.getDetailData(mId);
@@ -220,8 +218,6 @@ public class ZhihuDetailActivity
     protected int getLayoutId() {
         return R.layout.activity_zhihu_detail;
     }
-
-
 
 
     @OnClick({R.id.fab_like,

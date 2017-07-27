@@ -20,4 +20,6 @@ public interface MyApis {
      */
     @GET("version")
     Flowable<MyHttpResponse<VersionBean>> getVersionInfo();
+
+
 }

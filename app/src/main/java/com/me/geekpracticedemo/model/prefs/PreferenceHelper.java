@@ -16,4 +16,6 @@ public interface PreferenceHelper {
     void setVersionPoint(boolean b);
 
     boolean getVersionPoint();
+
+    boolean getAutoCacheState();
 }

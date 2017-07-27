@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.me.geekpracticedemo.R;
@@ -124,7 +125,10 @@ public class DailyFragment
         }
         stateMain();
         mList = info.getStories();
+//        Log.w("hongTest", "showContent:  getDate = "+info.getDate() );
         mCurrentDate = String.valueOf(Integer.valueOf(info.getDate()) + 1);
+        Log.w("hongTest", "showContent:  getDate = "+mCurrentDate );
+
         mAdapter.addDailyData(info);
         isDataReady = true;
         mPresenter.startInterval();
