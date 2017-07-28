@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.me.geekpracticedemo.app.App;
 import com.me.geekpracticedemo.di.component.DaggerFragmentComponent;
 import com.me.geekpracticedemo.di.component.FragmentComponent;
 import com.me.geekpracticedemo.di.module.FragmentModule;
+import com.me.geekpracticedemo.util.SnackbarUtil;
 
 import javax.inject.Inject;
 
@@ -49,4 +51,32 @@ public abstract class BaseFragment<T extends BasePresenter> extends SimpleFragme
     }
 
     protected abstract void initInject();
+
+
+    @Override
+    public void showErrorMsg(String msg) {
+        SnackbarUtil.show(((ViewGroup) getActivity().findViewById(android.R.id.content)).getChildAt(0), msg);
+    }
+
+    @Override
+    public void useNightMode(boolean isNight) {
+    }
+
+
+    @Override
+    public void stateError() {
+    }
+
+    @Override
+    public void stateEmpty() {
+    }
+
+    @Override
+    public void stateLoading() {
+    }
+
+    @Override
+    public void stateMain() {
+    }
+
 }

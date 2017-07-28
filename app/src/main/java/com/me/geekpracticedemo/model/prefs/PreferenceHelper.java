@@ -18,4 +18,13 @@ public interface PreferenceHelper {
     boolean getVersionPoint();
 
     boolean getAutoCacheState();
+
+    void setNightModeState(boolean b);
+
+    void setNoImageState(boolean b);
+
+    boolean getNightModeState();
+
+
+    void setAutoCacheState(boolean state);
 }

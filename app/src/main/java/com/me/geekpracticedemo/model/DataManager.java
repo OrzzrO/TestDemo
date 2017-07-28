@@ -150,6 +150,26 @@ public class DataManager implements HttpHelper,DBHelper,PreferenceHelper {
       return   mPreferenceHelper.getAutoCacheState();
     }
 
+    @Override
+    public void setNightModeState(boolean b) {
+        mPreferenceHelper.setNightModeState(b);
+    }
+
+    @Override
+    public void setNoImageState(boolean b) {
+        mPreferenceHelper.setNoImageState(b);
+    }
+
+    @Override
+    public boolean getNightModeState() {
+        return mPreferenceHelper.getNightModeState();
+    }
+
+    @Override
+    public void setAutoCacheState(boolean state) {
+        mPreferenceHelper.setAutoCacheState(state);
+    }
+
     public void deleteLikeBean(String id) {
         mDBHelper.deleteLikeBean(id);
     }

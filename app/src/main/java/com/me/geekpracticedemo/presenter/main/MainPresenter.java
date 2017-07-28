@@ -6,7 +6,9 @@ import com.me.geekpracticedemo.base.RxPresenter;
 import com.me.geekpracticedemo.base.contract.main.MainContract;
 import com.me.geekpracticedemo.model.DataManager;
 import com.me.geekpracticedemo.model.bean.VersionBean;
+import com.me.geekpracticedemo.model.event.NightModeEvent;
 import com.me.geekpracticedemo.model.http.response.MyHttpResponse;
+import com.me.geekpracticedemo.util.RxBus;
 import com.me.geekpracticedemo.util.RxUtil;
 import com.me.geekpracticedemo.weight.CommonSubscriber;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -33,11 +35,30 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
     @Override
     public void attachView(MainContract.View view) {
         super.attachView(view);
-      //  registerEvent();
+        registerEvent();
     }
 
     private void registerEvent() {
+        addSubscribe(RxBus.getDefault().toFlowable(NightModeEvent.class)
+        .compose(RxUtil.<NightModeEvent>rxSchedulerHelper())
+        .map(new Function<NightModeEvent, Boolean>() {
+            @Override
+            public Boolean apply(NightModeEvent nightModeEvent) throws Exception {
+                return  nightModeEvent.getNightMode();
+            }
+        })
+        .subscribeWith(new CommonSubscriber<Boolean>(mView,"切换模式失败") {
+            @Override
+            public void onNext(Boolean aBoolean) {
+                    mView.useNightMode(aBoolean);
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+                registerEvent();
+            }
+        }));
 
     }
 

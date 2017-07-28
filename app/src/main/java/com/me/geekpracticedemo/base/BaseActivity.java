@@ -1,6 +1,7 @@
 package com.me.geekpracticedemo.base;
 
 import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
 
 import com.me.geekpracticedemo.app.App;
 import com.me.geekpracticedemo.di.component.ActivityComponent;
@@ -34,6 +35,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
 
     @Override
     public void useNightMode(boolean isNight) {
+        Log.w("hongTest", "useNightMode:  invoke--" );
         if (isNight){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }else{

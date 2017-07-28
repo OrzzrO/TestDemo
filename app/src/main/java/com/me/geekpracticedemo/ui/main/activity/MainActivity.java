@@ -4,7 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,6 +21,7 @@ import com.me.geekpracticedemo.app.Constants;
 import com.me.geekpracticedemo.base.BaseActivity;
 import com.me.geekpracticedemo.base.contract.main.MainContract;
 import com.me.geekpracticedemo.presenter.main.MainPresenter;
+import com.me.geekpracticedemo.ui.main.fragment.SettingFragment;
 import com.me.geekpracticedemo.ui.zhihu.fragment.ZhiHuMainFragment;
 import com.me.geekpracticedemo.util.SystemUtil;
 import com.me.geekpracticedemo.util.UpdateService;
@@ -51,6 +54,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     private int hideFragment = Constants.TYPE_ZHIHU;
     private int showFragment = Constants.TYPE_ZHIHU;
+    private SettingFragment mSettingFragment;
 
 
     @Override
@@ -67,15 +71,32 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+        if (savedInstanceState == null){
+            mPresenter.setNightModeState(false);
+        }else{
+            showFragment = mPresenter.getCurrentItem();
+            hideFragment = Constants.TYPE_ZHIHU;
+            showHideFragment(getTargetFragment(showFragment),getTargetFragment(hideFragment));
+            mNavigation.getMenu().findItem(R.id.drawer_zhihu).setCheckable(false);
+            mToolBar.setTitle(mNavigation.getMenu().findItem(getCurrentItem(showFragment)).getTitle().toString());
+            hideFragment = showFragment;
+        }
+
+    }
+
+    @Override
     protected void initEventAndData() {
         setToolBar(mToolBar,getResources().getString(R.string.zhihu));
         mZhiHuMainFragment = new ZhiHuMainFragment();
+        mSettingFragment = new SettingFragment();
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawer, mToolBar, R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mDrawer.addDrawerListener(mDrawerToggle);
         mLastMenuItem = mNavigation.getMenu().findItem(R.id.drawer_zhihu);
-        loadMultipleRootFragment(R.id.fl_main_content,0,mZhiHuMainFragment);
+        loadMultipleRootFragment(R.id.fl_main_content,0,mZhiHuMainFragment,mSettingFragment);
         mNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -83,8 +104,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     case R.id.drawer_zhihu:
                         showFragment = Constants.TYPE_ZHIHU;
                             mSearchMenuItem.setVisible(false);
-
                          break;
+                    case R.id.drawer_setting:
+                        showFragment = Constants.TYPE_SETTING;
+                        mSearchMenuItem.setVisible(false);
+                        break;
+
                     default:
                          break;
                 }
@@ -132,6 +157,28 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     }
 
+    private int getCurrentItem(int item) {
+        switch (item) {
+            case Constants.TYPE_ZHIHU:
+                return R.id.drawer_zhihu;
+            case Constants.TYPE_GANK:
+                return R.id.drawer_gank;
+            case Constants.TYPE_WECHAT:
+                return R.id.drawer_wechat;
+            case Constants.TYPE_GOLD:
+                return R.id.drawer_gold;
+            case Constants.TYPE_VTEX:
+                return R.id.drawer_vtex;
+            case Constants.TYPE_LIKE:
+                return R.id.drawer_like;
+            case Constants.TYPE_SETTING:
+                return R.id.drawer_setting;
+            case Constants.TYPE_ABOUT:
+                return R.id.drawer_about;
+        }
+        return R.id.drawer_zhihu;
+
+    }
     private SupportFragment getTargetFragment(int item) {
         switch (item) {
             case Constants.TYPE_ZHIHU:
@@ -146,8 +193,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 //                return mVtexFragment;
 //            case Constants.TYPE_LIKE:
 //                return mLikeFragment;
-//            case Constants.TYPE_SETTING:
-//                return mSettingFragment;
+            case Constants.TYPE_SETTING:
+                return mSettingFragment;
 //            case Constants.TYPE_ABOUT:
 //                return mAboutFragment;
         }
@@ -207,7 +254,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     }
 
-    private void checkPermissions() {
+    public  void checkPermissions() {
         mPresenter.checkPermission(new RxPermissions(this));
     }
 

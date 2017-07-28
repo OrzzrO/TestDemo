@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.me.geekpracticedemo.di.module.FragmentModule;
 import com.me.geekpracticedemo.di.scope.FragmentScope;
+import com.me.geekpracticedemo.ui.main.fragment.SettingFragment;
 import com.me.geekpracticedemo.ui.zhihu.fragment.CommentFragment;
 import com.me.geekpracticedemo.ui.zhihu.fragment.DailyFragment;
 import com.me.geekpracticedemo.ui.zhihu.fragment.HotFragment;
@@ -33,4 +34,5 @@ public interface FragmentComponent {
 
     void inject(HotFragment hotFragment);
 
+    void inject(SettingFragment settingFragment);
 }

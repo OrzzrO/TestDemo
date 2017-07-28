@@ -20,6 +20,7 @@ public class ImplPreferencesHelper implements PreferenceHelper{
     private static final int DEFAULT_CURRENT_ITEM = Constants.TYPE_ZHIHU;
     private static final boolean DEFAULT_VERSION_POINT = false;
     private static final boolean DEFAULT_AUTO_SAVE = true;
+    private static final boolean DEFAULT_NIGHT_MODE = false;
     private SharedPreferences mPreferences;
 
 
@@ -58,4 +59,26 @@ public class ImplPreferencesHelper implements PreferenceHelper{
     public boolean getAutoCacheState() {
         return mPreferences.getBoolean(Constants.SP_AUTO_CACHE, DEFAULT_AUTO_SAVE);
     }
+
+    @Override
+    public void setNightModeState(boolean state) {
+        mPreferences.edit().putBoolean(Constants.SP_NIGHT_MODE,state).apply();
+    }
+
+    @Override
+    public void setNoImageState(boolean state) {
+        mPreferences.edit().putBoolean(Constants.SP_NO_IMAGE,state).apply();
+    }
+
+    @Override
+    public boolean getNightModeState() {
+        return mPreferences.getBoolean(Constants.SP_NIGHT_MODE,DEFAULT_NIGHT_MODE);
+    }
+
+    @Override
+    public void setAutoCacheState(boolean state) {
+        mPreferences.edit().putBoolean(Constants.SP_AUTO_CACHE,state).apply();
+    }
+
+
 }

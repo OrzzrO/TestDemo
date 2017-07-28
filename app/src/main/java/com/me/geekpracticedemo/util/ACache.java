@@ -1,4 +1,4 @@
-package com.codeest.geeknews.component;
+package com.me.geekpracticedemo.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.codeest.geeknews.app.Constants;
+import com.me.geekpracticedemo.app.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -633,7 +633,8 @@ public class ACache {
          */
         private void calculateCacheSizeAndCacheCount() {
             new Thread(new Runnable() {
-                @Override public void run() {
+                @Override
+                public void run() {
                     int size = 0;
                     int count = 0;
                     File[] cachedFiles = cacheDir.listFiles();
@@ -826,7 +827,7 @@ public class ACache {
             if (hasDateInfo(data)) {
                 String saveDate = new String(copyOfRange(data, 0, 13));
                 String deleteAfter = new String(copyOfRange(data, 14, indexOf(data, mSeparator)));
-                return new String[] { saveDate, deleteAfter };
+                return new String[] {saveDate, deleteAfter };
             }
             return null;
         }

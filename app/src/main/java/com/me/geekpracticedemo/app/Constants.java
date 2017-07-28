@@ -24,6 +24,7 @@ public class Constants {
     public static final String SP_CURRENT_ITEM = "current_item";
     public static final String SP_VERSION_POINT = "version_point";
     public static final String SP_AUTO_CACHE = "auto_cache";
+    public static final String SP_NIGHT_MODE = "night_mode";
 
 
 
