@@ -35,7 +35,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
 
     @Override
     public void useNightMode(boolean isNight) {
-        Log.w("hongTest", "useNightMode:  invoke--" );
+        Log.w("hongTest", "post事件,调用这里 - useNightMode:  invoke--" );
         if (isNight){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }else{

@@ -125,9 +125,7 @@ public class DailyFragment
         }
         stateMain();
         mList = info.getStories();
-//        Log.w("hongTest", "showContent:  getDate = "+info.getDate() );
         mCurrentDate = String.valueOf(Integer.valueOf(info.getDate()) + 1);
-        Log.w("hongTest", "showContent:  getDate = "+mCurrentDate );
 
         mAdapter.addDailyData(info);
         isDataReady = true;

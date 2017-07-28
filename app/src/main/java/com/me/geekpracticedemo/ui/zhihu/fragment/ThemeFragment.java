@@ -74,7 +74,6 @@ public class ThemeFragment extends RootFragment<ThemePresenter> implements Theme
             if (mSwipeRefresh.isRefreshing()){
                 mSwipeRefresh.setRefreshing(false);
             }
-        Log.w("hongTest", "showContent:  themeListBean = " + themeListBean );
             stateMain();
             mList.clear();
             mList.addAll(themeListBean.getOthers());

@@ -117,6 +117,7 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
 
     @Override
     public void setNightModeState(boolean b) {
+        mDataManager.setNightModeState(b);
     }
 
     @Override
@@ -136,6 +137,6 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
 
     @Override
     public boolean getVersionPoint() {
-        return false;
+        return mDataManager.getVersionPoint();
     }
 }
