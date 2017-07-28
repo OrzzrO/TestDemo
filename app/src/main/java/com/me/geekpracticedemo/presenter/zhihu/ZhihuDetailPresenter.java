@@ -28,8 +28,7 @@ public class ZhihuDetailPresenter extends RxPresenter<ZhihuDetailContract.View> 
 
     @Override
     public void getDetailData(int id) {
-        addSubscribe(mDataManager.fetchDetailInfo(id)
-        .compose(RxUtil.<ZhihuDetailBean>rxSchedulerHelper())
+;0000000        .compose(RxUtil.<ZhihuDetailBean>rxSchedulerHelper())
         .subscribeWith(new CommonSubscriber<ZhihuDetailBean>(mView) {
             @Override
             public void onNext(ZhihuDetailBean zhihuDetailBean) {
