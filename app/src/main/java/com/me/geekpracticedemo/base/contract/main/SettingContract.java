@@ -15,7 +15,7 @@ public interface SettingContract {
         void showUpdateDialog(VersionBean versionBean);
     }
 
-    interface Presenter extends BasePresenter<View>{
+    interface Presenter extends BasePresenter<SettingContract.View>{
 
         void checkVersion(String currentVersion);
 

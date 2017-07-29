@@ -43,12 +43,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends SimpleFragme
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroyView() {
         if (mPresenter != null){
             mPresenter.detachView();
         }
-        super.onDestroy();
+        super.onDestroyView();
     }
+
 
     protected abstract void initInject();
 

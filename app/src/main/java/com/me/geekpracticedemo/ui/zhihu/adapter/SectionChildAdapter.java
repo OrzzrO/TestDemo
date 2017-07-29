@@ -63,7 +63,7 @@ public class SectionChildAdapter
             @Override
             public void onClick(View view) {
                 if (onItemClickListener != null){
-                    ImageView iv = view.findViewById(R.id.iv_daily_item_image);
+                    ImageView iv = (ImageView) view.findViewById(R.id.iv_daily_item_image);
                     onItemClickListener.OnItemClick(holder.getAdapterPosition(),iv);
                 }
 

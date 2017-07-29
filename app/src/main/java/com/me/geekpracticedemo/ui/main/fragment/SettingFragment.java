@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatCheckBox;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -30,8 +29,6 @@ import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import me.yokeyword.fragmentation.SupportActivity;
-import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * Created by user on 2017/7/28.
@@ -76,7 +73,6 @@ public class SettingFragment extends BaseFragment<SettingPresenter> implements S
     @Override
     protected void initEventAndData() {
         mCacheFile = new File(Constants.PATH_CACHE);
-        Log.w("hongTest", "initEventAndData: mcache = " + mCacheFile );
         mTvSettingClear.setText(ACache.getCacheSize(mCacheFile));
         mCbSettingCache.setChecked(mPresenter.getAutoCacheState());
         mCbSettingImage.setChecked(mPresenter.getNoImageState());
@@ -93,6 +89,8 @@ public class SettingFragment extends BaseFragment<SettingPresenter> implements S
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -133,23 +131,16 @@ public class SettingFragment extends BaseFragment<SettingPresenter> implements S
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         switch (compoundButton.getId()) {
             case R.id.cb_setting_night:
-                Log.w("hongTest", "onCheckedChanged: isNull =" + isNull );
-                if (isNull) {
-                    Log.w("hongTest", "onCheckedChanged: 点击按钮  b = " + b );
-                    mPresenter.setNightModeState(b);
-                    Log.w("hongTest", "onCheckedChanged: 存储到sp中 = " );
+                    if (isNull){
+                        mPresenter.setNightModeState(b);
+                        NightModeEvent event = new NightModeEvent();
+                        event.setNightMode(b);
+                        RxBus.getDefault().post(event);
+                    }
 
-                    NightModeEvent event = new NightModeEvent();
-                    event.setNightMode(b);
-                    RxBus
-                        .getDefault()
-                        .post(event);
-                    Log.w("hongTest", "onCheckedChanged:  post一个事件-" );
-                }
                 break;
             case R.id.cb_setting_image:
                 mPresenter.setNoImageState(b);
-                Log.w("hongTest", "onCheckedChanged: 无图模式 invoke" );
                 break;
             case R.id.cb_setting_cache:
                 mPresenter.setAutoCacheState(b);
@@ -169,7 +160,6 @@ public class SettingFragment extends BaseFragment<SettingPresenter> implements S
                 ShareUtil.sendEmail(mContext,"选择邮件客户端");
                 break;
             case R.id.ll_setting_clear:
-                Log.w("hongTest", "onViewClicked: mcache = " + mCacheFile );
                 ACache.deleteDir(mCacheFile);
                 mTvSettingClear.setText(ACache.getCacheSize(mCacheFile));
                 break;

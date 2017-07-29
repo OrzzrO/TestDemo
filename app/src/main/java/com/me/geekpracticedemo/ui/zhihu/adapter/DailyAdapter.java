@@ -5,7 +5,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,7 +110,7 @@ public class DailyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View view) {
                     if (onItemClickListener != null){
-                        ImageView iv = view.findViewById(R.id.iv_daily_item_image);
+                        ImageView iv = (ImageView) view.findViewById(R.id.iv_daily_item_image);
                         onItemClickListener.onItemClick(contentPosition,iv);
                     }
                 }
@@ -134,7 +133,6 @@ public class DailyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     public void addDailyData(DailyListBean info) {
-        Log.w("hongTest", "addDailyData: info = " + info );
         currentTitle = "今日热闻";
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ZhihuDiffCallback(mList,info.getStories()),false);
         mList = info.getStories();

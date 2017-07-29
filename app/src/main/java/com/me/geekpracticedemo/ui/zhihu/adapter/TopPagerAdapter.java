@@ -45,8 +45,8 @@ public class TopPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_top_pager, container, false);
-        ImageView ivImage = view.findViewById(R.id.iv_top_image);
-        TextView tvTitle = view.findViewById(R.id.tv_top_title);
+        ImageView ivImage = (ImageView) view.findViewById(R.id.iv_top_image);
+        TextView tvTitle = (TextView) view.findViewById(R.id.tv_top_title);
         ImageLoader.load(mContext,mList.get(position).getImage(),ivImage);
         tvTitle.setText(mList.get(position).getTitle());
         final int id = mList.get(position).getId();

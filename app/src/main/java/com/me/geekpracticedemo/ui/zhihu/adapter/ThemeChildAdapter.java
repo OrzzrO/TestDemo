@@ -52,7 +52,7 @@ public class ThemeChildAdapter
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageView iv = view.findViewById(R.id.iv_daily_item_image);
+                ImageView iv = (ImageView) view.findViewById(R.id.iv_daily_item_image);
                 onItemClickListener.onItemClick(holder.getAdapterPosition(),iv);
             }
         });

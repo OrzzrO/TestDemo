@@ -1,7 +1,6 @@
 package com.me.geekpracticedemo.ui.main.activity;
 
 import android.content.Intent;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +26,6 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
 
     @Override
     public void showContent(WelcomeBean welcomeBean) {
-        Log.w("hongTest", "showContent: 展示数据~" );
         ImageLoader.load(this,welcomeBean.getImg(),mIvWelcomeBg);
         mIvWelcomeBg.animate().scaleX(1.12f).scaleY(1.12f).setDuration(2000).setStartDelay(1000).start();
         mTvWelcomeAuthor.setText(welcomeBean.getText());
@@ -55,7 +53,6 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
         /**
          * 联网请求数据
          */
-        Log.w("hongTest", "initEventAndData: 联网请求数据~" );
         mPresenter.getWelcomeData();
     }
 

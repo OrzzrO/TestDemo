@@ -43,7 +43,7 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
         .compose(RxUtil.<NightModeEvent>rxSchedulerHelper())
         .map(new Function<NightModeEvent, Boolean>() {
             @Override
-            public Boolean apply(NightModeEvent nightModeEvent) throws Exception {
+            public Boolean apply(NightModeEvent nightModeEvent) {
                 return  nightModeEvent.getNightMode();
             }
         })

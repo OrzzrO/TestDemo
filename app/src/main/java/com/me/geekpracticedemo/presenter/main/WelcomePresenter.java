@@ -1,7 +1,5 @@
 package com.me.geekpracticedemo.presenter.main;
 
-import android.util.Log;
-
 import com.me.geekpracticedemo.base.RxPresenter;
 import com.me.geekpracticedemo.base.contract.main.WelcomeContract;
 import com.me.geekpracticedemo.model.DataManager;
@@ -47,7 +45,6 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
                 @Override
                 public void accept(Throwable throwable) throws Exception {
                     mView.jumpToMain();
-                    Log.w("hongTest", "accept: 获取数据失败~" );
                 }
             })
 
@@ -64,7 +61,6 @@ public class WelcomePresenter extends RxPresenter<WelcomeContract.View> implemen
                     @Override
                     public void accept(Long aLong) throws Exception {
                          //   mView.jumpToMain();
-                        Log.w("hongTest", "accept: 延时操作执行~~");
                     }
                 }));
 

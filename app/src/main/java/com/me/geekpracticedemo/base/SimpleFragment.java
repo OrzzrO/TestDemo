@@ -39,16 +39,12 @@ public abstract class SimpleFragment extends SupportFragment {
 
         mView = inflater.inflate(getlayoutId(), null);
         return mView;
-
     }
-
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
-
     }
 
     @Override
@@ -60,4 +56,10 @@ public abstract class SimpleFragment extends SupportFragment {
 
     protected abstract void initEventAndData();
     protected abstract int getlayoutId() ;
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mUnbinder.unbind();
+    }
 }

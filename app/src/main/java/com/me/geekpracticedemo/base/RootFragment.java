@@ -33,7 +33,7 @@ public abstract class RootFragment<T extends BasePresenter> extends BaseFragment
             if (getView() == null){
                 return;
             }
-        mViewMain = getView().findViewById(R.id.view_main);
+        mViewMain = (ViewGroup) getView().findViewById(R.id.view_main);
         if (mViewMain == null){
             throw new  IllegalStateException(
                 "the subclass of RootActivity must contain a View named 'view_main'"
@@ -47,7 +47,7 @@ public abstract class RootFragment<T extends BasePresenter> extends BaseFragment
         mParent = (ViewGroup) mViewMain.getParent();
         View.inflate(mContext,R.layout.view_progress,mParent);
         mViewLoading = mParent.findViewById(R.id.view_loading);
-        mIvLoading = mViewLoading.findViewById(R.id.iv_progress);
+        mIvLoading = (ProgressImageView) mViewLoading.findViewById(R.id.iv_progress);
         mViewLoading.setVisibility(View.GONE);
         mViewMain.setVisibility(View.VISIBLE);
     }
